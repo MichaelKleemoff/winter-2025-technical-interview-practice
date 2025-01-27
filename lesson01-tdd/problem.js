@@ -11,7 +11,11 @@
  * @returns {boolean} - True if the string is a palindrome, false otherwise.
  */
 function isPalindrome(str) {
-  // your code here
+	// Remove spaces, punctuation, and convert to lowercase
+	const cleanedStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+	// Check if the cleaned string is the same as its reverse
+	return cleanedStr === cleanedStr.split('').reverse().join('');
 }
 
 module.exports = isPalindrome;
