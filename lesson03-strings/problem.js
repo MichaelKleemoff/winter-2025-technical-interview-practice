@@ -28,9 +28,31 @@ Note:
 */
 
 function stringMatching(text, pattern) {
-  // TODO: Implement the string matching algorithm
-  // Return an array of indices where the pattern is found in the text
-  // If the pattern is not found, return an empty array
+	// TODO: Implement the string matching algorithm
+	// Return an array of indices where the pattern is found in the text
+	// If the pattern is not found, return an empty array
+
+	// Step 1: Implement the string matching algorithm
+	const result = [];
+	const textLength = text.length;
+	const patternLength = pattern.length;
+
+	// Edge case: Empty pattern
+	if (textLength === 0 || patternLength === 0) return [];
+
+	// Iterate over text and check substrings
+	for (let i = 0; i <= textLength - patternLength; i++) {
+		if (text.substring(i, i + patternLength) === pattern) {
+			result.push(i); // Add the index if a match is found
+		}
+	}
+
+	// Step 2: Return an array of indices where the pattern is found in the text
+	// Step 3: If the pattern is not found, return an empty array
+
+	return result;
 }
+
+console.log(stringMatching('ababcababcabc', 'abc'));
 
 module.exports = stringMatching;
