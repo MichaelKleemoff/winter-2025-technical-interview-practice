@@ -1,29 +1,57 @@
-const stringMatching = require("./problem");
+const { stringMatching, stringMatchingRegex } = require('./problem');
 
-describe("stringMatching", () => {
-  it("should return an array of indices where the pattern is found in the text", () => {
-    expect(stringMatching("ababcababcabc", "abc")).toEqual([2, 7, 10]);
-    expect(stringMatching("hello world", "xyz")).toEqual([]);
-    expect(stringMatching("abababab", "aba")).toEqual([0, 2, 4]);
-    expect(stringMatching("aaaaa", "aa")).toEqual([0, 1, 2, 3]);
-  });
+describe('stringMatching', () => {
+	it('should return an array of indices where the pattern is found in the text', () => {
+		expect(stringMatching('ababcababcabc', 'abc')).toEqual([2, 7, 10]);
+		expect(stringMatching('hello world', 'xyz')).toEqual([]);
+		expect(stringMatching('abababab', 'aba')).toEqual([0, 2, 4]);
+		expect(stringMatching('aaaaa', 'aa')).toEqual([0, 1, 2, 3]);
+	});
 
-  it("should return an empty array if the pattern is not found", () => {
-    expect(stringMatching("ababcababcabc", "xyz")).toEqual([]);
-    expect(stringMatching("hello world", "abc")).toEqual([]);
-    expect(stringMatching("abababab", "xyz")).toEqual([]);
-    expect(stringMatching("aaaaa", "xyz")).toEqual([]);
-  });
+	it('should return an empty array if the pattern is not found', () => {
+		expect(stringMatching('ababcababcabc', 'xyz')).toEqual([]);
+		expect(stringMatching('hello world', 'abc')).toEqual([]);
+		expect(stringMatching('abababab', 'xyz')).toEqual([]);
+		expect(stringMatching('aaaaa', 'xyz')).toEqual([]);
+	});
 
-  it("should be case-sensitive", () => {
-    expect(stringMatching("AbcAbcAbc", "abc")).toEqual([]);
-    expect(stringMatching("AbcAbcAbc", "Abc")).toEqual([0, 3, 6]);
-    expect(stringMatching("AbcAbcAbc", "AbC")).toEqual([]);
-  });
+	it('should be case-sensitive', () => {
+		expect(stringMatching('AbcAbcAbc', 'abc')).toEqual([]);
+		expect(stringMatching('AbcAbcAbc', 'Abc')).toEqual([0, 3, 6]);
+		expect(stringMatching('AbcAbcAbc', 'AbC')).toEqual([]);
+	});
 
-  it("should return an empty array if either text or pattern is an empty string", () => {
-    expect(stringMatching("", "abc")).toEqual([]);
-    expect(stringMatching("ababcababcabc", "")).toEqual([]);
-    expect(stringMatching("", "")).toEqual([]);
-  });
+	it('should return an empty array if either text or pattern is an empty string', () => {
+		expect(stringMatching('', 'abc')).toEqual([]);
+		expect(stringMatching('ababcababcabc', '')).toEqual([]);
+		expect(stringMatching('', '')).toEqual([]);
+	});
+});
+
+describe('stringMatchingRegex', () => {
+	it('should return an array of indices where the pattern is found in the text', () => {
+		expect(stringMatchingRegex('ababcababcabc', 'abc')).toEqual([2, 7, 10]);
+		expect(stringMatchingRegex('hello world', 'xyz')).toEqual([]);
+		expect(stringMatchingRegex('abababab', 'aba')).toEqual([0, 2, 4]);
+		expect(stringMatchingRegex('aaaaa', 'aa')).toEqual([0, 1, 2, 3]);
+	});
+
+	it('should return an empty array if the pattern is not found', () => {
+		expect(stringMatchingRegex('ababcababcabc', 'xyz')).toEqual([]);
+		expect(stringMatchingRegex('hello world', 'abc')).toEqual([]);
+		expect(stringMatchingRegex('abababab', 'xyz')).toEqual([]);
+		expect(stringMatchingRegex('aaaaa', 'xyz')).toEqual([]);
+	});
+
+	it('should be case-sensitive', () => {
+		expect(stringMatchingRegex('AbcAbcAbc', 'abc')).toEqual([]);
+		expect(stringMatchingRegex('AbcAbcAbc', 'Abc')).toEqual([0, 3, 6]);
+		expect(stringMatchingRegex('AbcAbcAbc', 'AbC')).toEqual([]);
+	});
+
+	it('should return an empty array if either text or pattern is an empty string', () => {
+		expect(stringMatchingRegex('', 'abc')).toEqual([]);
+		expect(stringMatchingRegex('ababcababcabc', '')).toEqual([]);
+		expect(stringMatchingRegex('', '')).toEqual([]);
+	});
 });
